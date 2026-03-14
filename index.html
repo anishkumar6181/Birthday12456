@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Shreya 🎉</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;500;600;700&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ========== CANVAS for global particles ========== -->
+  <canvas id="globalCanvas"></canvas>
+
+  <!-- =========================================
+       SECTION 1 – LANDING PAGE
+  ========================================== -->
+  <section id="landing" class="section active-section">
+    <div class="balloon-container" id="balloonContainer"></div>
+    <div class="landing-content">
+      <div class="sparkle-ring"></div>
+      <h1 class="landing-title">Happy Birthday to My<br>Amazing Best Friend&nbsp;🎉</h1>
+      <p class="landing-sub">A little surprise crafted just for you 💖</p>
+      <button class="btn-primary pulse" id="startBtn">Start the Surprise ✨</button>
+    </div>
+    <!-- Floating emoji confetti -->
+    <div class="emoji-rain" id="emojiRain"></div>
+  </section>
+
+  <!-- =========================================
+       SECTION 2 – SECRET UNLOCK PAGE
+  ========================================== -->
+  <section id="unlock" class="section hidden">
+    <div class="unlock-card glass-card">
+      <div class="lock-icon" id="lockIcon">🔐</div>
+      <h2>Before entering,<br>unlock the secret surprise 💌</h2>
+      <p class="unlock-hint">Enter my special nickname for you 👇</p>
+      <div class="input-group">
+        <input type="text" id="nicknameInput" placeholder="Type your nickname…" autocomplete="off" />
+        <button class="btn-primary" id="unlockBtn">Unlock 💫</button>
+      </div>
+      <p class="error-msg hidden" id="errorMsg">Hmm, try again… I believe in you! 😄</p>
+      <!-- Hearts puzzle visual -->
+      <div class="hearts-row">
+        <span class="heart-puzzle" data-idx="0">🤍</span>
+        <span class="heart-puzzle" data-idx="1">🤍</span>
+        <span class="heart-puzzle" data-idx="2">🤍</span>
+        <span class="heart-puzzle" data-idx="3">🤍</span>
+        <span class="heart-puzzle" data-idx="4">🤍</span>
+      </div>
+    </div>
+    <!-- Unlock success overlay -->
+    <div class="unlock-overlay hidden" id="unlockOverlay">
+      <div class="unlock-success-anim">
+        <div class="big-lock">🎊</div>
+        <p>Yay! You unlocked it! ✨</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================
+       SECTION 3 – BIRTHDAY CAKE
+  ========================================== -->
+  <section id="cake" class="section hidden">
+    <div class="section-header">
+      <h2 class="section-title">Make a Wish 🎂</h2>
+      <p class="section-sub">Click the candles to light them, then blow them out!</p>
+    </div>
+    <div class="cake-scene">
+      <!-- Candles (5) -->
+      <div class="candles-row" id="candlesRow">
+        <div class="candle" data-candle="0"><div class="flame hidden"></div><div class="candle-body"></div></div>
+        <div class="candle" data-candle="1"><div class="flame hidden"></div><div class="candle-body"></div></div>
+        <div class="candle" data-candle="2"><div class="flame hidden"></div><div class="candle-body"></div></div>
+        <div class="candle" data-candle="3"><div class="flame hidden"></div><div class="candle-body"></div></div>
+        <div class="candle" data-candle="4"><div class="flame hidden"></div><div class="candle-body"></div></div>
+      </div>
+      <!-- Cake layers -->
+      <div class="cake">
+        <div class="cake-top"></div>
+        <div class="cake-middle"></div>
+        <div class="cake-bottom"></div>
+        <div class="cake-plate"></div>
+      </div>
+      <p class="wish-msg hidden" id="wishMsg">🌟 Make a wish and blow the candles! 🌟</p>
+      <button class="btn-primary hidden" id="blowBtn">Blow Candles 💨</button>
+    </div>
+    <div class="floating-balloons-cake" id="cakeBalloons"></div>
+    <div class="section-nav-btn" id="cakeNextWrap" style="display:none;">
+      <button class="btn-next" id="cakeNextBtn">Our Memories ✨ →</button>
+    </div>
+  </section>
+
+  <!-- =========================================
+       SECTION 4 – MEMORY TIMELINE
+  ========================================== -->
+  <section id="timeline" class="section hidden">
+    <div class="section-header">
+      <h2 class="section-title">Our Best Memories Together 📸</h2>
+      <p class="section-sub">A journey through our most precious moments</p>
+    </div>
+    <div class="timeline-container">
+
+      <!-- Memory 1 -->
+      <div class="timeline-item left reveal-item">
+        <div class="timeline-dot">💫</div>
+        <div class="memory-card glass-card">
+          <div class="memory-img-wrap">
+            <img src="image/Sh3.jpeg" alt="Memory 1" loading="lazy" />
+          </div>
+          <div class="memory-info">
+            <span class="memory-date">Day 1 ✨</span>
+            <p class="memory-caption">"First time we met – The beginning of an amazing friendship."</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Memory 2 -->
+      <div class="timeline-item right reveal-item">
+        <div class="timeline-dot">🌸</div>
+        <div class="memory-card glass-card">
+          <div class="memory-img-wrap">
+            <img src="image/S1.png" alt="Memory 2" loading="lazy" />
+          </div>
+          <div class="memory-info">
+            <span class="memory-date">Our Funniest Day 😂</span>
+            <p class="memory-caption">"Our funniest moment together – we laughed so hard it hurt!"</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Memory 3 -->
+      <div class="timeline-item left reveal-item">
+        <div class="timeline-dot">🌺</div>
+        <div class="memory-card glass-card">
+          <div class="memory-img-wrap">
+            <img src="image/S3.jpeg" alt="Memory 3" loading="lazy" />
+          </div>
+          <div class="memory-info">
+            <span class="memory-date">That Unforgettable Day 🌟</span>
+            <p class="memory-caption">"The day we laughed non-stop – pure joy, pure magic."</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Memory 4 -->
+      <div class="timeline-item right reveal-item">
+        <div class="timeline-dot">💖</div>
+        <div class="memory-card glass-card">
+          <div class="memory-img-wrap">
+            <img src="image/S4.jpeg" alt="Memory 4" loading="lazy" />
+          </div>
+          <div class="memory-info">
+            <span class="memory-date">Forever Remembered 🎀</span>
+            <p class="memory-caption">"A moment I will never forget – you make every day special."</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="section-nav-btn">
+      <button class="btn-next" onclick="showSection('gallery')">📸 Photo Gallery →</button>
+    </div>
+  </section>
+
+  <!-- =========================================
+       SECTION 5 – PHOTO GALLERY
+  ========================================== -->
+  <section id="gallery" class="section hidden">
+    <div class="section-header">
+      <h2 class="section-title">Our Beautiful Moments 🖼️</h2>
+      <p class="section-sub">Click any photo to view it in full screen</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item reveal-item" data-src="image/S1.png">
+        <img src="image/S1.png" alt="Photo 1" loading="lazy" />
+        <div class="gallery-overlay"><span>🔍 View</span></div>
+      </div>
+      <div class="gallery-item reveal-item" data-src="image/S2.jpeg">
+        <img src="image/S2.jpeg" alt="Photo 2" loading="lazy" />
+        <div class="gallery-overlay"><span>🔍 View</span></div>
+      </div>
+      <div class="gallery-item reveal-item" data-src="image/S3.jpeg">
+        <img src="image/S3.jpeg" alt="Photo 3" loading="lazy" />
+        <div class="gallery-overlay"><span>🔍 View</span></div>
+      </div>
+      <div class="gallery-item reveal-item" data-src="image/S4.jpeg">
+        <img src="image/S4.jpeg" alt="Photo 4" loading="lazy" />
+        <div class="gallery-overlay"><span>🔍 View</span></div>
+      </div>
+    </div>
+    <div class="section-nav-btn">
+      <button class="btn-next" onclick="showSection('video-section')">🎥 Special Video →</button>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox hidden" id="lightbox">
+      <button class="lightbox-close" id="lightboxClose">&times;</button>
+      <img id="lightboxImg" src="" alt="Full view" />
+    </div>
+  </section>
+
+  <!-- =========================================
+       SECTION 6 – SPECIAL VIDEO
+  ========================================== -->
+  <section id="video-section" class="section hidden">
+    <div class="section-header">
+      <h2 class="section-title">Our Special Moments 🎥</h2>
+      <p class="section-sub">A little video made with love, just for you</p>
+    </div>
+    <div class="video-container glass-card reveal-item">
+      <video id="birthdayVideo" controls preload="metadata" poster="image/S1.png">
+        <source src="video/v2.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div class="video-play-overlay" id="videoPlayOverlay">
+        <div class="play-btn-anim">▶</div>
+        <p>Click to play our special video 💕</p>
+      </div>
+    </div>
+    <div class="section-nav-btn">
+      <button class="btn-next" onclick="showSection('message')">💌 Secret Message →</button>
+    </div>
+  </section>
+
+  <!-- =========================================
+       SECTION 7 – SECRET MESSAGE
+  ========================================== -->
+  <section id="message" class="section hidden">
+    <div class="section-header">
+      <h2 class="section-title">A Secret Just for You 💌</h2>
+      <p class="section-sub">Click the heart to reveal my message</p>
+    </div>
+    <div class="message-center">
+      <div class="heart-reveal" id="heartReveal">
+        <div class="big-heart" id="bigHeart">💗</div>
+        <p class="heart-hint">Tap me ✨</p>
+      </div>
+      <div class="typewriter-card glass-card hidden" id="typewriterCard">
+        <div class="typewriter-text" id="typewriterText"></div>
+        <div class="message-signature">— With all my love 🌸</div>
+      </div>
+    </div>
+    <div class="section-nav-btn">
+      <button class="btn-next" onclick="showSection('quiz')">🎮 Fun Quiz →</button>
+    </div>
+  </section>
+
+  <!-- =========================================
+       SECTION 8 – FUN QUIZ
+  ========================================== -->
+  <section id="quiz" class="section hidden">
+    <div class="section-header">
+      <h2 class="section-title">How Well Do You Know Me? 🎮</h2>
+      <p class="section-sub">Answer fun questions about us!</p>
+    </div>
+    <div class="quiz-container glass-card">
+      <div class="quiz-progress-bar"><div id="quizProgress" class="quiz-progress-fill"></div></div>
+      <p class="quiz-num" id="quizNum">Question 1 / 4</p>
+      <p class="quiz-question" id="quizQuestion">Loading…</p>
+
+      <div class="quiz-options" id="quizOptions"></div>
+      <div class="quiz-result hidden" id="quizResult"></div>
+      <div class="quiz-final hidden" id="quizFinal">
+        <div class="trophy" id="quizTrophy">🏆</div>
+        <p id="quizScore"></p>
+        <button class="btn-primary" id="quizRestart">Play Again 🎉</button>
+        <button class="btn-next hidden" id="quizNextBtn" onclick="showSection('finale')" style="margin-top:14px;">🎆 Grand Finale →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================
+       SECTION 9 – FINAL BIRTHDAY WISH
+  ========================================== -->
+  <section id="finale" class="section hidden">
+    <canvas id="fireworksCanvas"></canvas>
+    <div class="finale-content">
+      <h1 class="finale-title">HAPPY BIRTHDAY</h1>
+      <div class="emoji-burst">🎉🎊🎈🎆🎇✨💫</div>
+      <p class="finale-msg">
+        "Thank you for being the most amazing best friend in my life.<br>
+        May this year bring you endless happiness, love, and success. 💖"
+      </p>
+      <div class="floating-hearts-finale" id="floatingHeartsFinale"></div>
+    </div>
+  </section>
+
+  <!-- =========================================
+       GLOBAL NAVIGATION DOTS
+  ========================================== -->
+  <nav class="dot-nav hidden" id="dotNav">
+    <button class="dot-btn active" data-section="cake" title="Cake">🎂</button>
+    <button class="dot-btn" data-section="timeline" title="Memories">📸</button>
+    <button class="dot-btn" data-section="gallery" title="Gallery">🖼️</button>
+    <button class="dot-btn" data-section="video-section" title="Video">🎥</button>
+    <button class="dot-btn" data-section="message" title="Message">💌</button>
+    <button class="dot-btn" data-section="quiz" title="Quiz">🎮</button>
+    <button class="dot-btn" data-section="finale" title="Finale">🎆</button>
+  </nav>
+
+  <!-- Floating music icon button -->
+  <button class="music-btn hidden" id="musicBtn" title="Play / Pause music">🎵</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
